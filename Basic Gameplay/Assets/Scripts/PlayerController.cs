@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject foodProjectile;
+    public KeyCode projectileInput;
     [SerializeField] private float speed = 10.0f;
     private float horizontalInput;
     private float offsetLimit = 15;
@@ -12,6 +14,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMove();
         MovementLimitPlayer();
+        LaunchFoodProjectile();
     }
 
     private void PlayerMove()
@@ -31,6 +34,15 @@ public class PlayerController : MonoBehaviour
         if(transform.position.x > offsetLimit)
         {
             transform.position = new Vector3(offsetLimit, transform.position.y, transform.position.z);
+        }
+    }
+    
+    private void LaunchFoodProjectile()
+    {
+        //Launch a projectile from the player
+        if(Input.GetKeyDown(projectileInput))
+        {
+            Instantiate(foodProjectile, transform.position, foodProjectile.transform.rotation);
         }
     }
 }
