@@ -5,25 +5,24 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public List<GameObject> animalsPrefabs;
-    public KeyCode spawnInput;
 
     private float spawnRangeX = 15;
     private float spawnPosZ = 20;
+    private float startDelay = 2;
+    private float spawnInterval = 1.5f;
 
-    private void Update() 
+    private void Start() 
     {
-        SpawnAnimals();
+        InvokeRepeating("SpawnAnimals", startDelay, spawnInterval);
     }
 
     private void SpawnAnimals()
     {
-        if(Input.GetKeyDown(spawnInput))
-        {
-            //Gere aleatoriamente índice de animais e posição de desova
-            Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
+        //Gere aleatoriamente índice de animais e posição de desova
+        int animalIndex = Random.Range(0, animalsPrefabs.Count);
 
-            int animalIndex = Random.Range(0, animalsPrefabs.Count);
-            Instantiate(animalsPrefabs[animalIndex], spawnPos, animalsPrefabs[animalIndex].transform.rotation);
-        }
+        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
+
+        Instantiate(animalsPrefabs[animalIndex], spawnPos, animalsPrefabs[animalIndex].transform.rotation);
     }
 }
