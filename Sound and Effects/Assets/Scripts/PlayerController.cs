@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public KeyCode inputKey;
     public float gravityModifier;
+    public bool gameOver = false;
     private Rigidbody playerRigidbody;
     [SerializeField] private float jumpForce = 10;
+    
     private bool isOnGround = true;
 
     private void Start() 
@@ -29,6 +31,15 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision) 
     {
         //Ao entrar em contato com o solo, input de salto é liberado
-        isOnGround = true; 
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            isOnGround = false;
+            gameOver = true;
+            Debug.Log("Game Over!");
+        }
     }
 }
