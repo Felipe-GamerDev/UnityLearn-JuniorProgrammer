@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.1669614, z: 3.5116234}
-  m_Center: {x: 0, y: 0.9456414, z: 0.059800625}
+  m_Size: {x: 0.64494705, y: 1.974641, z: 3.5116234}
+  m_Center: {x: 0.029586792, y: 0.93824464, z: 0.059800625}
 --- !u!54 &4209416870409043934
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  leftBound: -15
 --- !u!1 &8747664225813249705
 GameObject:
   m_ObjectHideFlags: 0

@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c126e20ef6f2f1f448839665c01c8cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputKey: 119
+  inputKey: 32
   gravityModifier: 1.5
   gameOver: 0
   jumpForce: 550
