@@ -4,13 +4,37 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    //Script para Spawnar inimigos e powerups. Além de controle de wave com o SpawnEnemyWave e Instantiete(powerupPrefab).
+
     public GameObject enemyPrefab;
+    public GameObject powerupPrefab;
+    public int enemyCount;
+    public int waveNumber = 1;
     private float spawnRange = 9;
 
     private void Start() 
     {
-        
-        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); 
+        SpawnEnemyWave(waveNumber);
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+    } 
+
+    private void Update() 
+    {
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+        if(enemyCount == 0)
+        {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        }
+    }
+
+    private void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for(int i = 0; i < enemiesToSpawn; i++)
+        {
+             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); 
+        }
     }
 
     private Vector3 GenerateSpawnPosition()

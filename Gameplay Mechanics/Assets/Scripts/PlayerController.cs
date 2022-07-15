@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //Script para o jogador. Movimentação, colisão(powerup e inimigo), Spawn do indicador de Powerup na posição do jogador.
+
     public bool hasPowerup;
     public GameObject powerupIndicator;
     private GameObject focalPoint;

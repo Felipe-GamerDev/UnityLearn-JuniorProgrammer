@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    //Script para mover o inimigo em direção do jogador.
+
     [SerializeField] private float speed;
     private Rigidbody enemyRigidbody;
     private GameObject player;
@@ -17,6 +19,10 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate() 
     {
         EnemyFollowPlayer();
+        if(transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void EnemyFollowPlayer()

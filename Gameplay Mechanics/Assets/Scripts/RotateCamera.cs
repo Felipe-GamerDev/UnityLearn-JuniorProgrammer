@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour
 {
+    //Script para rotacionar a camera com input;
     public float rotationSpeed;
 
     private void Update() 
