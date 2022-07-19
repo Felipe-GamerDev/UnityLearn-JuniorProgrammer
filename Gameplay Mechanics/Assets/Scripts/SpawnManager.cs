@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     //Script para Spawnar inimigos e powerups. Além de controle de wave com o SpawnEnemyWave e Instantiete(powerupPrefab).
 
-    public GameObject enemyPrefab;
+    public List<GameObject> enemyPrefab;
     public GameObject powerupPrefab;
     public int enemyCount;
     public int waveNumber = 1;
@@ -33,7 +33,9 @@ public class SpawnManager : MonoBehaviour
     {
         for(int i = 0; i < enemiesToSpawn; i++)
         {
-             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); 
+            int randomEnemy = Random.Range(0, enemyPrefab.Count);
+            
+            Instantiate(enemyPrefab[randomEnemy], GenerateSpawnPosition(), enemyPrefab[randomEnemy].transform.rotation);
         }
     }
 
