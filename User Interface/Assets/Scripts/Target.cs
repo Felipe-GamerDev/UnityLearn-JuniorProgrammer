@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    //Script para movimentação dos alvos e destruir em caso de click ou contato com o trigger do sensor.
+    //Script para movimentação dos alvos, destruir em caso de click ou contato com o trigger do sensor e pontuação.
 
     public int pointValue;
     public ParticleSystem explosionParticle;
@@ -43,13 +43,20 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown() 
     {
-        Destroy(gameObject);
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-        gameManager.UptadeScore(pointValue);
+        if(gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            gameManager.UptadeScore(pointValue);
+        }
     }
 
     private void OnTriggerEnter(Collider other) 
     {
         Destroy(gameObject);
+        if(!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+        }
     }
 }
