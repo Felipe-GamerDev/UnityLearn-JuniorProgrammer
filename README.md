@@ -12,3 +12,6 @@
 ## Gameplay Mechanics
 ![GameplayMechanics](https://user-images.githubusercontent.com/98328890/179747685-ffdfbcac-e938-4d6a-bfb3-19fdc31531e8.jpeg)
 >Movimentação: W/S; Mover câmera: A/D
+## User Interface
+![UI](https://user-images.githubusercontent.com/98328890/180022743-61658296-f212-4302-a4fa-da8f1cedd2f3.jpg)
+>Jogadabilidade: Mouse(click)
