@@ -6,13 +6,15 @@ public class Target : MonoBehaviour
 {
     //Script para movimentação dos alvos e destruir em caso de click ou contato com o trigger do sensor.
 
-
+    public int pointValue;
+    public ParticleSystem explosionParticle;
     private Rigidbody targetRigidbody;
-    private float minSpeed = 12;
-    private float maxSpeed = 16;
+    private float minSpeed = 14;
+    private float maxSpeed = 17;
     private float maxTorque = 10;
     private float xRange = 4;
     private float ySpawPos = -6;
+    private GameManager gameManager;
 
     private void Start() 
     {
@@ -20,6 +22,8 @@ public class Target : MonoBehaviour
         targetRigidbody.AddForce(RandomForce(), ForceMode.Impulse);
         targetRigidbody.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomSpawnPos();
+
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     private Vector3 RandomForce()
@@ -40,6 +44,8 @@ public class Target : MonoBehaviour
     private void OnMouseDown() 
     {
         Destroy(gameObject);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        gameManager.UptadeScore(pointValue);
     }
 
     private void OnTriggerEnter(Collider other) 
